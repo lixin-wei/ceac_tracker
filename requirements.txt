@@ -2,3 +2,4 @@ wheel
 lxml
 requests
 beautifulsoup4
+ischedule

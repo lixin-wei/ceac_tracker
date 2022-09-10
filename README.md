@@ -21,3 +21,9 @@ Then edit `keys.json
 ```bash
 python refresh_once.py
 ```
+
+## Run Periodically
+
+```bash
+python refresh_periodically.py
+```

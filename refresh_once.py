@@ -4,7 +4,7 @@ import json
 from notification import ding_talk_notice
 
 
-if __name__ == "__main__":
+def refresh_once():
     for application_id, location, case_created in get_all_applications():
         res = query_status(location, application_id)
         print("Result got! Data =", json.dumps(res, indent=4))
@@ -17,3 +17,7 @@ if __name__ == "__main__":
             add_record(application_id, res["case_last_updated"], res["status"], res["description"])
         else:
             print(f"Application {application_id} has no update now.")
+
+
+if __name__ == "__main__":
+    refresh_once()
