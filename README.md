@@ -26,4 +26,8 @@ python refresh_once.py
 
 ```bash
 python refresh_periodically.py
+
+# Run in background. `-u` means disable output buffer
+# or nohup.out will have no log.
+nohup python -u refresh_periodically.py &
 ```

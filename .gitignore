@@ -2,3 +2,4 @@ __pycache__
 tmp
 data.db
 keys.json
+nohup.out
