@@ -14,7 +14,7 @@ Insert application_id to database manually.
 cp keys_template.json keys.json
 ```
 
-Then edit `keys.json
+Then edit `keys.json`
 
 ## Refresh Once
 
