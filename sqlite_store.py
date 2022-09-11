@@ -1,4 +1,7 @@
 import sqlite3
+from my_logging import get_logger
+
+logger = get_logger(__file__)
 
 conn = sqlite3.connect("data.db")
 cursor = conn.cursor()
@@ -8,6 +11,7 @@ def get_all_applications():
     global cursor
     res = cursor.execute("SELECT application_id, location, case_created FROM application")
     return res.fetchall()
+
 
 def get_all_records(application_id):
     global cursor
@@ -37,5 +41,5 @@ if __name__ == "__main__":
     add_application("AA00B7QPGN", "BEJ", "30-Aug-2022")
     # add_record("AA00B7QPGN", "31-Aug-2022", "Refused", "A U.S. consular officer has adjudicated and refused your visa application.  Please see the letter you received at the interview.")
     add_record("AA00B7QPGN", "31-Aug-2022", "Refused", "Wow")
-    print(get_all_applications())
-    print(get_all_records("AA00B7QPGN"))
+    logger.info(get_all_applications())
+    logger.info(get_all_records("AA00B7QPGN"))

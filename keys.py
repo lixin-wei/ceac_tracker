@@ -1,4 +1,7 @@
 import json
+from my_logging import get_logger
+
+logger = get_logger(__file__)
 
 
 def get_keys():
@@ -8,5 +11,5 @@ def get_keys():
 
 if __name__ == "__main__":
     keys = get_keys()
-    print(keys)
-    print(keys["2capture_key"])
+    logger.info(keys)
+    logger.info(keys["2capture_key"])

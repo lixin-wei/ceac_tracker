@@ -4,6 +4,9 @@ import json
 import base64
 import os
 from two_captcha_resolve import resolve_captcha
+from my_logging import get_logger
+
+logger = get_logger(__file__)
 
 
 def query_status(location, application_num):
@@ -22,7 +25,7 @@ def query_status(location, application_num):
     # Find captcha image
     captcha = soup.find(name="img", id="c_status_ctl00_contentplaceholder1_defaultcaptcha_CaptchaImage")
     image_url = ROOT + captcha["src"]
-    print(f"Captcha URL = {image_url}")
+    logger.info(f"Captcha URL = {image_url}")
     img_resp = session.get(image_url)
     with open("tmp/captcha.jpeg", "wb") as f:
         f.write(img_resp.content)
@@ -63,8 +66,8 @@ def query_status(location, application_num):
     for field in fields_need_update:
         update_from_current_page(soup, field, data)
 
-    # print(json.dumps(data, indent=4))
-    # print(f"{ROOT}/ceacstattracker/status.aspx")
+    # logger.info(json.dumps(data, indent=4))
+    # logger.info(f"{ROOT}/ceacstattracker/status.aspx")
 
     # -------Result page------
     r = session.post(url=f"{ROOT}/ceacstattracker/status.aspx", headers=headers, data=data)
@@ -98,4 +101,4 @@ def query_status(location, application_num):
 
 if __name__ == "__main__":
     res = query_status("BEJ", "AA00B7QPGN")
-    print(json.dumps(res, indent=4))
+    logger.info(json.dumps(res, indent=4))
