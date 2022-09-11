@@ -15,5 +15,6 @@ if __name__ == "__main__":
         except:
             logger.exception("Refresh failed!")
 
+    refresh_once_safe()
     schedule(refresh_once_safe, interval=interval)
     run_loop()
