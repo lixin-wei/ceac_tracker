@@ -25,9 +25,10 @@ python refresh_once.py
 ## Run Periodically
 
 ```bash
-python refresh_periodically.py
+# The number indicates interval in seconds
+python refresh_periodically.py 3600
 
 # Run in background. `-u` means disable output buffer
 # or nohup.out will have no log.
-nohup python -u refresh_periodically.py &
+nohup python -u refresh_periodically.py 3600&
 ```
