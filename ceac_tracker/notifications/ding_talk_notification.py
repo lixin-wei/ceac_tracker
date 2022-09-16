@@ -1,5 +1,5 @@
 import requests
-from keys import get_keys
+from ceac_tracker.config.keys import get_keys
 
 def ding_talk_notice(message):
     ding_talk_key = get_keys()["ding_talk_key"]

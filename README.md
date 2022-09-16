@@ -1,9 +1,15 @@
 # Quick Start
 
+## Install Package
+
+```bash
+pip instsall -e ./ -v
+```
+
 ## Init Database
 
 ```bash
-python sqlite_store.py
+python ceac_tracker/db/sqlite_store.py
 ```
 
 Insert application_id to database manually.
@@ -11,7 +17,7 @@ Insert application_id to database manually.
 ## Configure Third-Party Service Keys
 
 ```bash
-cp keys_template.json keys.json
+cp ceac_tracker/config/keys_template.json keys.json
 ```
 
 Then edit `keys.json`
@@ -19,18 +25,18 @@ Then edit `keys.json`
 ## Refresh Once
 
 ```bash
-python refresh_once.py
+python ceac_tracker/refresh_once.py
 ```
 
 ## Run Periodically
 
 ```bash
 # The number indicates interval in seconds
-python refresh_periodically.py 3600
+python ceac_tracker/refresh_periodically.py 3600
 
 # Run in background. `-u` means disable output buffer
 # or nohup.out will have no log.
-nohup python -u refresh_periodically.py 3600&
+nohup python -u ceac_tracker/refresh_periodically.py 3600&
 ```
 
 # For Developers: How to Replace Third-Party Services

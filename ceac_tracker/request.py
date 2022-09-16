@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 import json
 import base64
 import os
-from two_captcha_resolve import resolve_captcha
-from my_logging import get_logger
+from ceac_tracker.captcha_resolver.two_captcha_resolve import resolve_captcha
+from ceac_tracker.utils.my_logging import get_logger
 
 logger = get_logger(__file__)
 

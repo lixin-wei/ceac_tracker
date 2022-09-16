@@ -1,6 +1,6 @@
-from refresh_once import refresh_once
+from ceac_tracker.refresh_once import refresh_once
 from ischedule import run_loop, schedule
-from my_logging import get_logger
+from ceac_tracker.utils.my_logging import get_logger
 import sys
 
 logger = get_logger(__file__)

@@ -1,11 +1,13 @@
 import json
-from my_logging import get_logger
+import os
+from ceac_tracker.utils.my_logging import get_logger
 
 logger = get_logger(__file__)
+config_root = os.path.dirname(__file__)
 
 
 def get_keys():
-    with open("keys.json", "r") as f:
+    with open(os.path.join(config_root, "keys.json"), "r") as f:
         return json.loads(f.read())
 
 

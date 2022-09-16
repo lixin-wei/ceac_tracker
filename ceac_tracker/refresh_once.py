@@ -1,8 +1,8 @@
-from request import query_status
-from sqlite_store import get_all_applications, get_all_records, add_record
+from ceac_tracker.request import query_status
+from ceac_tracker.db.sqlite_store import get_all_applications, get_all_records, add_record
 import json
-from notification import ding_talk_notice
-from my_logging import get_logger
+from ceac_tracker.notifications.ding_talk_notification import ding_talk_notice
+from ceac_tracker.utils.my_logging import get_logger
 
 logger = get_logger(__file__)
 

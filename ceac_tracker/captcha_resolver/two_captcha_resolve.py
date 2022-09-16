@@ -1,7 +1,7 @@
 import requests
 import time
-from keys import get_keys
-from my_logging import get_logger
+from ceac_tracker.config.keys import get_keys
+from ceac_tracker.utils.my_logging import get_logger
 
 logger = get_logger(__file__)
 

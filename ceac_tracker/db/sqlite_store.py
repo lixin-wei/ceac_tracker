@@ -1,9 +1,11 @@
 import sqlite3
-from my_logging import get_logger
+from os import path
+from ceac_tracker.utils.my_logging import get_logger
 
 logger = get_logger(__file__)
+db_root = path.dirname(__file__)
 
-conn = sqlite3.connect("data.db")
+conn = sqlite3.connect(path.join(db_root, "data.db"))
 cursor = conn.cursor()
 
 
@@ -34,7 +36,7 @@ def add_record(application_id, update_date, status, description):
 
 
 if __name__ == "__main__":
-    with open("ddl.sql", "r") as ddl:
+    with open(path.join(db_root, "ddl.sql"), "r") as ddl:
         sql = ddl.read()
         cursor.executescript(sql)
         conn.commit()
