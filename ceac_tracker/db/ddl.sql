@@ -4,7 +4,8 @@ DROP TABLE IF EXISTS history;
 CREATE TABLE application(
     application_id TEXT PRIMARY KEY,
     location TEXT,
-    case_created TEXT
+    case_created TEXT,
+    notification_email TEXT
 );
 CREATE TABLE history(
     record_id INTEGER PRIMARY KEY,

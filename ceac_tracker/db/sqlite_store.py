@@ -11,7 +11,7 @@ cursor = conn.cursor()
 
 def get_all_applications():
     global cursor
-    res = cursor.execute("SELECT application_id, location, case_created FROM application")
+    res = cursor.execute("SELECT application_id, location, case_created, notification_email FROM application")
     return res.fetchall()
 
 
@@ -21,9 +21,9 @@ def get_all_records(application_id):
     return res.fetchall()
 
 
-def add_application(application_id, location, case_created):
+def add_application(application_id, location, case_created, notification_email):
     global cursor, conn
-    res = cursor.execute("INSERT INTO application(application_id, location, case_created) VALUES(?, ?, ?)", (application_id, location, case_created))
+    res = cursor.execute("INSERT INTO application(application_id, location, case_created, notification_email) VALUES(?, ?, ?, ?)", (application_id, location, case_created, notification_email))
     conn.commit()
 
 
@@ -40,8 +40,8 @@ if __name__ == "__main__":
         sql = ddl.read()
         cursor.executescript(sql)
         conn.commit()
-    add_application("AA00B7QPGN", "BEJ", "30-Aug-2022")
-    # add_record("AA00B7QPGN", "31-Aug-2022", "Refused", "A U.S. consular officer has adjudicated and refused your visa application.  Please see the letter you received at the interview.")
-    add_record("AA00B7QPGN", "31-Aug-2022", "Refused", "Wow")
+    add_application("AA00B7QPGN", "BEJ", "30-Aug-2022", "wlx65005@gmail.com")
+    # add_record("AA00B7QPGN", "31-Aug-2022", "Refused", "A U.S. consular officer has adjudicated and refused your visa application.  Please see the letter you received at the interview.", "wlx65005@gmail.com")
+    # add_record("AA00B7QPGN", "31-Aug-2022", "Refused", "Wow")
     logger.info(get_all_applications())
     logger.info(get_all_records("AA00B7QPGN"))

@@ -1,14 +1,14 @@
 from ceac_tracker.request import query_status
 from ceac_tracker.db.sqlite_store import get_all_applications, get_all_records, add_record
 import json
-from ceac_tracker.notifications.ding_talk_notification import ding_talk_notice
+from ceac_tracker.notifications.email_notification import send_notification
 from ceac_tracker.utils.my_logging import get_logger
 
 logger = get_logger(__file__)
 
 
 def refresh_once():
-    for application_id, location, case_created in get_all_applications():
+    for application_id, location, case_created, notification_email in get_all_applications():
         res = query_status(location, application_id)
         logger.info(f"Result got! Data = {json.dumps(res, indent=4)}")
         all_records = get_all_records(application_id)
@@ -16,7 +16,10 @@ def refresh_once():
 
         if not all_records or all_records[0] != res_tuple:
             logger.info("Inserting new value!")
-            ding_talk_notice(f"New visa status: {res['status']}, desc={res['description']}")
+            send_notification(
+                f"New visa status: {res['status']}\n\nDescription: {res['description']}\n\nCase last updated: {res['case_last_updated']}",
+                receiver=notification_email
+            )
             add_record(application_id, res["case_last_updated"], res["status"], res["description"])
         else:
             logger.info(f"Application {application_id} has no update now.")

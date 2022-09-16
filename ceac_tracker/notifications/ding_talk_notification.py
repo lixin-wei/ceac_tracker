@@ -1,7 +1,7 @@
 import requests
 from ceac_tracker.config.keys import get_keys
 
-def ding_talk_notice(message):
+def send_notification(message):
     ding_talk_key = get_keys()["ding_talk_key"]
     requests.post(
         f"https://oapi.dingtalk.com/robot/send?access_token={ding_talk_key}",
@@ -9,4 +9,4 @@ def ding_talk_notice(message):
     )
 
 if __name__ == "__main__":
-    ding_talk_notice("Hello!")
+    send_notification("Hello!")
