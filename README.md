@@ -17,7 +17,7 @@ Insert application_id to database manually.
 ## Configure Third-Party Service Keys
 
 ```bash
-cp ceac_tracker/config/keys_template.json keys.json
+cp ceac_tracker/config/keys_template.json ceac_tracker/config/keys.json
 ```
 
 Then edit `keys.json`
