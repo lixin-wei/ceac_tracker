@@ -19,7 +19,7 @@ def refresh_once():
             logger.info("Inserting new value!")
             msg = f"New visa status for {res['application_num']}: {res['status']}\n\nDescription: {res['description']}\n\nCase last updated: {res['case_last_updated']}"
             send_notification(msg, receiver=notification_email)
-            ding_talk.send_notification(msg, receiver)
+            ding_talk.send_notification(msg, notification_email)
             add_record(application_id, res["case_last_updated"], res["status"], res["description"])
         else:
             logger.info(f"Application {application_id} has no update now.")
