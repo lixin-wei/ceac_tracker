@@ -22,4 +22,4 @@ def send_notification(message, receiver):
 
 
 if __name__ == "__main__":
-    send_notification("Hello!")
+    send_notification("Hello!", "wlx65005@gmail.com")
