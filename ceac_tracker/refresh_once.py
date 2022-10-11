@@ -10,10 +10,14 @@ logger = get_logger(__file__)
 
 def refresh_once():
     for application_id, location, case_created, notification_email in get_all_applications():
-        res = query_status(location, application_id)
-        logger.info(f"Result got! Data = {json.dumps(res, indent=4)}")
         all_records = get_all_records(application_id)
+        # Skip issued applications
+        if all_records and all_records[0][1] == "Issued":
+            logger.info(f"Application {application_id} has already issued, skip.")
+            continue
+        res = query_status(location, application_id)
         res_tuple = (res["case_last_updated"], res["status"], res["description"])
+        logger.info(f"Result got! Data = {json.dumps(res, indent=4)}")
 
         if not all_records or all_records[0] != res_tuple:
             logger.info("Inserting new value!")
