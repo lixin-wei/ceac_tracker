@@ -12,7 +12,7 @@ pip install -e ./ -v
 python ceac_tracker/db/sqlite_store.py
 ```
 
-Insert application_id to database manually.
+Insert application_id to database manually. See `db/ddl.sql` for the schema.
 
 ## Configure Third-Party Service Keys
 
@@ -20,7 +20,7 @@ Insert application_id to database manually.
 cp ceac_tracker/config/keys_template.json ceac_tracker/config/keys.json
 ```
 
-Then edit `keys.json`
+Then edit `keys.json`, no need to fill `ding_talk_key` if you don't want to use DingTalk notification.
 
 ## Refresh Once
 
@@ -39,13 +39,11 @@ python ceac_tracker/refresh_periodically.py 3600
 nohup python -u ceac_tracker/refresh_periodically.py 3600&
 ```
 
-# For Developers: How to Replace Third-Party Services
+# For Developers: How to Replace Third-Party Service
 
-I use [2captcha](https://2captcha.com/) to resolve captcha.
+I use [2captcha](https://2captcha.com/) to resolve captcha. And use email to send the notification.
 
-And use [DingTalk Robot](https://open.dingtalk.com/document/robots/custom-robot-access) for notification.
-
-You probably need to replace them if you don't want to use these two service.
+You probably need to replace it if you don't want to use this service.
 
 To replace captcha resolving service, you need to implement another `resolve_captcha(image_base64)` function similar to what in `two_captcha_resolve.py`,
 and replace all `resolve_captcha` to your own function.
@@ -54,7 +52,5 @@ and replace all `resolve_captcha` to your own function.
 def resolve_captcha(image_base64: str) -> str:
     pass
 ```
-
-To replace notification service, try to replace `ding_talk_notice(msg)` to your own function.
 
 Sorry for the unplugable code, but it's only for my own use now. Welcome for pull requests to make it better.
