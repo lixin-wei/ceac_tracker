@@ -12,7 +12,9 @@ pip install -e ./ -v
 python ceac_tracker/db/sqlite_store.py
 ```
 
-Insert application_id to database manually. See `db/ddl.sql` for the schema.
+It will generate a SQLite file `db/data.db`.
+
+Use SQLite client to insert application_id to the `application` table manually. See `db/ddl.sql` for the schema.
 
 ## Configure Third-Party Service Keys
 
