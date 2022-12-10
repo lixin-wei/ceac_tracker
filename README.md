@@ -3,7 +3,7 @@
 ## Install Package
 
 ```bash
-pip instsall -e ./ -v
+pip install -e ./ -v
 ```
 
 ## Init Database
