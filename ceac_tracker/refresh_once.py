@@ -16,8 +16,8 @@ def refresh_once():
             logger.info(f"Application {application_id} has already issued, skip.")
             continue
         res = query_status(location, application_id)
-        res_tuple = (res["case_last_updated"], res["status"], res["description"])
         logger.info(f"Result got! Data = {json.dumps(res, indent=4)}")
+        res_tuple = (res["case_last_updated"], res["status"], res["description"])
 
         if not all_records or all_records[0] != res_tuple:
             logger.info("Inserting new value!")

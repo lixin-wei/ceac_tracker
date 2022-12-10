@@ -10,7 +10,15 @@ logger = get_logger(__file__)
 
 
 def query_status(location, application_num):
-    headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "en,zh-CN;q=0.9,zh;q=0.8",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "Host": "ceac.state.gov",
+    }
 
     session = requests.Session()
     ROOT = "https://ceac.state.gov"
